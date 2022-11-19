@@ -1,29 +1,40 @@
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
-int main(void) {
+void showmenu(void) {
 	cout << "Please enter one of the following choices:" << endl
 		 << "c) carnivore p) pianist" << endl
 		 << "t) tree g) game" << endl;
+}
 
-	char c;
-	cin >> c;
-	while (c != 'c' && c != 'p' && c != 't' && c != 'g') {
+int main(void) {
+	showmenu();
+	const char *opts = "cptg";
+	enum { c, p, t, g, };
+	const char *msg[] = {
+		[c] = "You describe yourself as a born-again carnivore.",
+		[p] = "Howard is a talented pianist.",
+		[t] = "A maple is a tree.",
+		[g] = "The Match-Game is a simple and fun game.",
+	};
+	
+	char choice;
+	cin >> choice;
+	while (!strchr(opts, choice)) {
 		cout << "Please enter a c, p, t, or g: ";
-		cin >> c;
+		cin >> choice;
 	}
 	
-	switch (c) {
-		case 'c': cout << "You describe yourself as a born-again carnivore." << endl;
-				  break;
-		case 'p': cout << "Howard is a talented pianist." << endl;
-				  break;
-		case 't': cout << "A maple is a tree." << endl;
-				  break;
-		case 'g': cout << "The Match-Game is a simple and fun game." << endl;
-				  break;
+	const char *output;
+	switch (choice) {
+		case 'c': output = msg[c]; break;
+		case 'p': output = msg[p]; break;
+		case 't': output = msg[t]; break;
+		case 'g': output = msg[g]; break;
 	}
+	cout << output << endl;
 	
 	return 0;
 }
