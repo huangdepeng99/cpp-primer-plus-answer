@@ -8,7 +8,7 @@ struct debts {
 };
 
 template <typename T>
-T SumArray(T arr[], int n) {
+T SumArray(T const arr[], int n) {
 	T sum = 0;
     for (int i = 0; i < n; ++ i)
         sum += arr[i];
@@ -16,7 +16,7 @@ T SumArray(T arr[], int n) {
 }
 
 template <typename T>
-T SumArray(T *arr[], int n) {
+T SumArray(T * const arr[], int n) {
 	T sum = 0;
     for (int i = 0; i < n; ++ i)
         sum += *arr[i];

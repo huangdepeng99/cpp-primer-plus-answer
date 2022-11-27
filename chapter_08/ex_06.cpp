@@ -4,7 +4,7 @@
 using namespace std;
 
 template <typename T>
-T maxn(T arr[], int n) {
+T maxn(T const arr[], int n) {
 	T m = arr[0];
 	for (int i = 1; i < n; ++ i)
 		if (arr[i] > m)
@@ -12,7 +12,7 @@ T maxn(T arr[], int n) {
 	return m;
 }
 
-template <> char *maxn<char *>(char *arr[], int n) {
+template <> char *maxn<char *>(char * const arr[], int n) {
 	char *m = arr[0];
 	for (int i = 1; i < n; ++ i)
 		if (strlen(arr[i]) > strlen(m))
@@ -20,7 +20,7 @@ template <> char *maxn<char *>(char *arr[], int n) {
 	return m;
 }
 
-template <> const char *maxn<const char *>(const char *arr[], int n) {
+template <> const char *maxn<const char *>(const char * const arr[], int n) {
 	const char *m = arr[0];
 	for (int i = 1; i < n; ++ i)
 		if (strlen(arr[i]) > strlen(m))
@@ -30,8 +30,8 @@ template <> const char *maxn<const char *>(const char *arr[], int n) {
 
 int main(void) {
 	int ai[6] = {1, 2, 3, 4, 5, 6};
-	double ad[4] = {2.2, 3.7, 4.3, 9.2};
-	const char *acs[5] = {
+	double const ad[4] = {2.2, 3.7, 4.3, 9.2};
+	const char * const acs[5] = {
 		"Hello World!",
 		"Hi! Siri.",
 		"My name is Jack.",
