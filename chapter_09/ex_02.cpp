@@ -21,7 +21,7 @@ int main(void) {
 	
     cout << "Enter a line (empty line to quit):" << endl;
 	std::getline(cin, input);
-    while (cin && input != "") {
+    while (cin.good() && input != "") {
         strcount(input);
         cout << "Enter next line (empty line to quit):" << endl;
 		std::getline(cin, input);

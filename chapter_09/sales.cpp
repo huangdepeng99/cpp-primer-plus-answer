@@ -31,18 +31,19 @@ namespace SALES {
 		for (int i = 0; i < QUARTERS; ++ i) {
 			cout << "#" << i + 1 << ": ";
 			cin >> s.sales[i];
-			while (!cin) {
+			while (!cin.good()) {
 				if (cin.eof()) {
-					cout << endl;
+					std::cerr << endl;
 					std::cerr << "Eof-Of-File reached." << endl;
 					std::exit(EXIT_FAILURE);
-				} else if (cin.fail()) {
+				} else if (cin.bad()) {
+					std::cerr << endl;
+					std::cerr << "Input terminated for unkonwn reason." << endl;
+					std::exit(EXIT_FAILURE);
+				} else {	// cin.fail()
 					cin.clear();
 					while (cin.get() != '\n')
 						;
-				} else {	// cin.bad()
-					std::cerr << "Input terminated for unkonwn reason." << endl;
-					std::exit(EXIT_FAILURE);
 				}
 				cout << "Bad input! Please enter an number: ";
 				cin >> s.sales[i];
