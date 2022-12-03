@@ -1,3 +1,5 @@
+#ifndef _GOLF_H_
+#define _GOLF_H_
 const int Len = 40;
 
 struct golf {
@@ -12,3 +14,4 @@ int setgolf(golf & g);
 void handicap(golf & g, int hc);
 
 void showgolf(const golf & g);
+#endif

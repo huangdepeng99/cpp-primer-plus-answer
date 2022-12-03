@@ -1,3 +1,5 @@
+#ifndef _SALES_H_
+#define _SALES_H_
 namespace SALES {
 	const int QUARTERS = 4;
 	struct Sales {
@@ -10,3 +12,4 @@ namespace SALES {
 	void setSales(Sales & s);
 	void showSales(const Sales & s);
 }
+#endif
