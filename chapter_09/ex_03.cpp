@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cstring>
+#include <new>
 
 const int BUF = 512;
 const int N = 2;
