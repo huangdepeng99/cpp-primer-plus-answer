@@ -14,7 +14,7 @@ private:
 	void set_lbs();
 	void set_stn();
 public:
-    Stonewt(double lbs, Mode form = LBS);          // constructor for double pounds
+    explicit Stonewt(double lbs, Mode form = LBS);          // constructor for double pounds
     Stonewt(int stn, double lbs, Mode form = STN); // constructor for stone, lbs
     Stonewt();                    // default constructor
     ~Stonewt();
