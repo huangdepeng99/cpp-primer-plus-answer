@@ -41,17 +41,17 @@ bool Stonewt::operator!= (const Stonewt & s) const {
 }
 
 bool Stonewt::operator> (const Stonewt & s) const {
-	return this->compare(s) > 0.0 ? true : false;
+	return this->compare(s) > 0.0;
 }
 
 bool Stonewt::operator>= (const Stonewt & s) const {
-	return this->compare(s) >= 0.0 ? true : false;
+	return this->compare(s) >= 0.0;
 }
 
 bool Stonewt::operator< (const Stonewt & s) const {
-	return this->compare(s) < 0.0 ? true : false;
+	return this->compare(s) < 0.0;
 }
 
 bool Stonewt::operator<= (const Stonewt & s) const {
-	return this->compare(s) <= 0.0 ? true : false;
+	return this->compare(s) <= 0.0;
 }

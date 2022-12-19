@@ -14,7 +14,7 @@ public:
     ~Stonewt();
     void show_lbs() const;        // show weight in pounds format
     void show_stn() const;        // show weight in stone format
-	int compare(const Stonewt & s) const
+	double compare(const Stonewt & s) const
 		{ return pounds - s.pounds; }
 	bool operator== (const Stonewt & s) const;
 	bool operator!= (const Stonewt & s) const;
