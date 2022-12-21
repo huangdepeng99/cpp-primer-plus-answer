@@ -33,25 +33,25 @@ void Stonewt::show_lbs() const {
 }
 
 bool Stonewt::operator== (const Stonewt & s) const {
-	return !this->compare(s);
+	return !compare(s);
 }
 
 bool Stonewt::operator!= (const Stonewt & s) const {
-	return this->compare(s);
+	return compare(s);
 }
 
 bool Stonewt::operator> (const Stonewt & s) const {
-	return this->compare(s) > 0.0;
+	return compare(s) > 0.0;
 }
 
 bool Stonewt::operator>= (const Stonewt & s) const {
-	return this->compare(s) >= 0.0;
+	return compare(s) >= 0.0;
 }
 
 bool Stonewt::operator< (const Stonewt & s) const {
-	return this->compare(s) < 0.0;
+	return compare(s) < 0.0;
 }
 
 bool Stonewt::operator<= (const Stonewt & s) const {
-	return this->compare(s) <= 0.0;
+	return compare(s) <= 0.0;
 }
