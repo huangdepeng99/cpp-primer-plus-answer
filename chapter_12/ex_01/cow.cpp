@@ -10,7 +10,7 @@ Cow::Cow() {
 
 Cow::Cow(const char * nm, const char * ho, double wt) {
 	std::strncpy(name, nm, 19);
-	name[20] = '\0';
+	name[19] = '\0';
 	hobby = new char[std::strlen(ho) + 1];
 	std::strcpy(hobby, ho);
 	weight = wt;
