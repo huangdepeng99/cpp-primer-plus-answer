@@ -19,7 +19,7 @@ public:
 	explicit baseDMA(const char * l = "null", int r = 0);
 	baseDMA(const topDMA & rs);
 	baseDMA & operator=(const topDMA & rs);
-    virtual void View() const;
+    void View() const override;
 };
 
 // derived class lacksDMA
@@ -31,7 +31,7 @@ public:
     explicit lacksDMA(const char * c = "blank", const char * l = "null",
 						int r = 0);
     lacksDMA(const char * c, const topDMA & rs);
-	virtual void View() const;
+	void View() const override;
 };
 
 // derived class hasDMA
@@ -45,6 +45,6 @@ public:
     hasDMA(const hasDMA & rs);
     ~hasDMA();
     hasDMA & operator=(const hasDMA & rs);
-	virtual void View() const;
+	void View() const override;
 };
 #endif

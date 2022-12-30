@@ -12,6 +12,6 @@ public:
 	Classic();
 	~Classic();
 	Classic & operator=(const Classic & c);
-	virtual void Report() const;
+	void Report() const override;
 };
 #endif

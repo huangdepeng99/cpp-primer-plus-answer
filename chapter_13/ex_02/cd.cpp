@@ -1,8 +1,8 @@
 #include <cstring>
 #include "cd.h"
 
-// auto Cd::SetFormat() -> Formatting {
-Cd::Formatting Cd::SetFormat() {
+// Cd::Formatting Cd::SetFormat() {
+auto Cd::SetFormat() -> Formatting {
 	using std::cout;
 	using std::ios_base;
 	
