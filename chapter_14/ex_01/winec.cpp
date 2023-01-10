@@ -18,7 +18,7 @@ void Wine::GetBottles() {
 	using std::cout;
 	using std::endl;
 	
-	cout << "Enter " << label << " data for " << years << "year(s):" << endl;
+	cout << "Enter " << label << " data for " << years << " year(s):" << endl;
 	for (int i = 0; i < years; ++ i) {
 		cout << "Enter year: ";
 		cin >> pa.first()[i];
@@ -40,11 +40,18 @@ void Wine::Show() const {
 	using std::endl;
 	using std::setw;
 	
+	std::ios_base::fmtflags ff = cout.flags();
+	char fillch = cout.fill(' ');
+	
 	cout << "Wine: " << label << endl
 		 << setw(8) << ' ' << "Year" << setw(4) << ' ' << "Bottles" << endl;
+	cout << std::left;
 	for (int i = 0; i < years; ++ i) {
-		cout << setw(8) << ' ' << pa.first()[i]
+		cout << setw(8) << ' ' << setw(4) << pa.first()[i]
 			 << setw(4) << ' ' << pa.second()[i]
 			 << endl;
 	}
+	
+	cout.flags(ff);
+	cout.fill(fillch);
 }
