@@ -9,6 +9,7 @@ private:
 protected:
 	virtual void Get() = 0;
 	virtual void Data() const = 0;
+	virtual const char * Self() const = 0;
 public:
 	Person() { }
 	Person(const std::string & fn, const std::string & ln)
@@ -25,6 +26,7 @@ private:
 protected:
 	void Get() override;
 	void Data() const override;
+	const char * Self() const override { return "gunslinger"; }
 public:
 	Gunslinger() : dtime(0.0), nicks(0) { }
 	Gunslinger(const std::string & fn, const std::string & ln,
@@ -42,6 +44,7 @@ class PockerPlayer : virtual public Person {
 protected:
 	void Get() override { }
 	void Data() const override { }
+	const char * Self() const override { return "pockerplayer"; }
 public:
 	PockerPlayer() { }
 	PockerPlayer(const std::string & fn, const std::string & ln)
@@ -58,6 +61,7 @@ class BadDude final : public Gunslinger, public PockerPlayer {
 protected:
 	void Get() override { }
 	void Data() const override { }
+	const char * Self() const override { return "baddude"; }
 public:
 	BadDude() { }
 	BadDude(const std::string & fn, const std::string & ln,

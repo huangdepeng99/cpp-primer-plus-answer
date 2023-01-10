@@ -9,14 +9,20 @@ void Person::Get() {
 	using std::cout;
 	using std::getline;
 	
-	cout << "Enter person\'s first name: ";
+	// 虚函数调用 Self()，不要使用有限定的名字
+	cout << "Enter " << Self() << "\'s first name: ";
 	getline(cin, fname);
-	cout << "Enter person\'s last name: ";
+	// 虚函数调用 Self()，不要使用有限定的名字
+	cout << "Enter " << Self() << "\'s last name: ";
 	getline(cin, lname);
 }
 
 void Person::Data() const {
 	std::cout << "Name: " << fname << ' ' << lname << std::endl;
+}
+
+const char * Person::Self() const {
+	return "person";
 }
 
 Person::~Person()
@@ -50,19 +56,24 @@ void Person::Set() {
 	// 不是非得要覆盖 Set() 方法才行，因此，在这里，对于这两个
 	// 类，我采用的解决方法是使用有限定的名字来抑制虚函数调用，
 	// 同时，为了减少出错的可能，我将程序中的其它类似的地方都
-	// 使用了有限定的名字，虽然有些地方并不需要。
-	// 此外，对于其它成员，则没有使用有限定的名字的必要，即使
-	// 派生类中定义了和基类名字相同的成员，因为它们不是虚函数，
-	// 不会发生虚函数调用，事实上，此时只会进行常规的名字查找。
-	// 总之，对于方法中调用的虚函数，应尽可能的使用有限定的名字，
-	// 因为，此时如果发生虚函数调用，它会无视常规的名字查找规则，
-	// 调用一个你意料之外的错误函数（最终覆盖函数）；至于其它成
-	// 员，通常来说就没有这个必要了，因为其它成员不会发生虚函数
-	// 调用，因此它们会按照常规的名字查找规则来进行名字的匹配。
+	// 使用了有限定的名字，虽然有些地方这样做可能不是必需的。
+	// 此外，对于其它成员，则没有使用有限定的名字的必要，因为
+	// 它们不是虚函数，不会发生虚函数调用，事实上，此时只会进行
+	// 常规的名字查找。
+	// 总之，对于方法中调用的虚函数，如果你不希望发生虚函数调用，
+	// 则应使用有限定的名字来对虚函数调用进行抑制（比如，该程序
+	// 中的 Get() 和 Data() ），然而，在有的时候，这种虚函数调
+	// 用是有益的（比如，该程序中的 Self() ）；对于其它成员，通
+	// 常来说，没有使用有限定的名字的必要，因为其它成员不会发生
+	// 虚函数调用，因此它们会按照常规的名字查找规则来进行名字的
+	// 匹配，但是在有的时候，对其它成员使用有限定的名字也是有用
+	// 的，甚至是必须的，比如，派生类中的成员隐藏了基类中的同名
+	// 成员的时候。
 	Person::Get();
 }
 
 void Person::Show() const {
+	// 有限定的名字，抑制虚函数调用
 	Person::Data();
 }
 
@@ -71,9 +82,11 @@ void Gunslinger::Get() {
 	using std::cin;
 	using std::cout;
 	
-	cout << "Enter gunslinger\'s drawing time: ";
+	// 虚函数调用 Self()，不要使用有限定的名字
+	cout << "Enter " << Self() << "\'s drawing time: ";
 	cin >> dtime;
-	cout << "Enter gunslinger\'s number of nicks: ";
+	// 虚函数调用 Self()，不要使用有限定的名字
+	cout << "Enter " << Self() << "\'s number of nicks: ";
 	cin >> nicks;
 	while (cin.get() != '\n')
 		continue;
@@ -89,12 +102,15 @@ void Gunslinger::Data() const {
 
 void Gunslinger::Set() {
 	Person::Get();
+	// 有限定的名字，抑制虚函数调用
 	Gunslinger::Get();
 }
 
 void Gunslinger::Show() const {
-	std::cout << "Category: gunslinger" << std::endl;
+	// 虚函数调用 Self()，不要使用有限定的名字
+	std::cout << "Category: " << Self() << std::endl;
 	Person::Data();
+	// 有限定的名字，抑制虚函数调用
 	Gunslinger::Data();
 }
 
@@ -105,16 +121,20 @@ int PockerPlayer::Draw() const {
 }
 
 void PockerPlayer::Show() const {
-	std::cout << "Category: pockerplayer" << std::endl;
+	// 虚函数调用 Self()，不要使用有限定的名字
+	std::cout << "Category: " << Self() << std::endl;
 	Person::Data();
+	// 有限定的名字，抑制虚函数调用
 	PockerPlayer::Data();
 }
 
 // BadDude methods
 void BadDude::Show() const {
-	std::cout << "Category: baddude" << std::endl;
+	// 虚函数调用 Self()，不要使用有限定的名字
+	std::cout << "Category: " << Self() << std::endl;
 	Person::Data();
 	Gunslinger::Data();
 	PockerPlayer::Data();
+	// 有限定的名字，抑制虚函数调用
 	BadDude::Data();
 }

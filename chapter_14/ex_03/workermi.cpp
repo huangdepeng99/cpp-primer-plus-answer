@@ -7,9 +7,9 @@ void Worker::Get() {
 	using std::cin;
 	using std::cout;
 	
-	cout << "Enter worker\'s name: ";
+	cout << "Enter " << Self() << "\'s name: ";
 	std::getline(cin, fullname);
-	cout << "Enter worker\'s ID: ";
+	cout << "Enter " << Self() << "\'s ID: ";
     cin >> id;
     while (cin.get() != '\n')
 		continue;
@@ -20,11 +20,15 @@ void Worker::Data() const {
 	std::cout << "Employee ID: " << id << std::endl;
 }
 
+const char * Worker::Self() const {
+	return "worker";
+}
+
 // Waiter methods
 void Waiter::Get() {
 	using std::cin;
 	
-	std::cout << "Enter waiter's panache rating: ";
+	std::cout << "Enter " << Self() << "\'s panache rating: ";
 	cin >> panache;
     while (cin.get() != '\n')
 		continue;
@@ -40,7 +44,7 @@ void Waiter::Set() {
 }
 
 void Waiter::Show() const {
-	std::cout << "Category: waiter" << std::endl;
+	std::cout << "Category: " << Self() << std::endl;
     Worker::Data();
     Data();
 }
@@ -55,7 +59,7 @@ void Singer::Get() {
 	using std::cout;
 	using std::endl;
 	
-    cout << "Enter number for singer's vocal range:" << endl;
+    cout << "Enter number for " << Self() << "\'s vocal range:" << endl;
 	int i;
     for (i = 0; i < Vtypes; ++ i) {
         cout << i << ": " << pv[i];
@@ -83,7 +87,7 @@ void Singer::Set()
 }
 
 void Singer::Show() const {
-	std::cout << "Category: singer" << std::endl;
+	std::cout << "Category: " << Self() << std::endl;
     Worker::Data();
     Data();
 }
@@ -105,7 +109,7 @@ void SingingWaiter::Set() {
 }
 
 void SingingWaiter::Show() const {
-	std::cout << "Category: singing waiter" << std::endl;
+	std::cout << "Category: " << Self() << std::endl;
     Worker::Data();
     Data();
 }

@@ -9,6 +9,7 @@ private:
 protected:
     virtual void Get();
     virtual void Data() const;
+	virtual const char * Self() const = 0;
 public:
     Worker() : fullname("no one"), id(0L) { }
     Worker(const std::string & s, long n)
@@ -24,6 +25,7 @@ private:
 protected:
     void Get() override;
     void Data() const override;
+	const char * Self() const override { return "waiter"; }
 public:
     Waiter() : Worker(), panache(0) { }
     Waiter(const std::string & s, long n, int p = 0)
@@ -42,6 +44,7 @@ public:
 protected:
     void Get() override;
     void Data() const override;
+	const char * Self() const override { return "singer"; }
 private:
     enum { Vtypes = end_ };
 	
@@ -63,6 +66,7 @@ class SingingWaiter final : public Singer, public Waiter {
 protected:
     void Get() override;
     void Data() const override;
+	const char * Self() const override { return "singing waiter"; }
 public:
     SingingWaiter() { }
     SingingWaiter(const std::string & s, long n, int p = 0, int v = other)
