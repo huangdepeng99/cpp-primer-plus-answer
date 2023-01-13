@@ -1,5 +1,5 @@
-#ifndef _LIST_H_
-#define _LIST_H_
+#ifndef LIST_H_
+#define LIST_H_
 namespace LIST {
 	typedef int Item;
 	

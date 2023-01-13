@@ -1,5 +1,5 @@
-#ifndef _STRING2_H_
-#define _STRING2_H_
+#ifndef STRING2_H_
+#define STRING2_H_
 #include <iostream>
 
 class String {

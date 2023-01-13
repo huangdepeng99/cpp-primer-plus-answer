@@ -1,5 +1,5 @@
-#ifndef _GOLF_H_
-#define _GOLF_H_
+#ifndef GOLF_H_
+#define GOLF_H_
 const int Len = 40;
 
 struct golf {

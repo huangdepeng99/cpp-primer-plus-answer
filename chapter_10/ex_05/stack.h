@@ -1,5 +1,5 @@
-#ifndef _STACK_H_
-#define _STACK_H_
+#ifndef STACK_H_
+#define STACK_H_
 #include "customer.h"
 
 typedef customer Item;

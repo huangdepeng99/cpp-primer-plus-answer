@@ -1,5 +1,5 @@
-#ifndef _WORKERMI_H_
-#define _WORKERMI_H_
+#ifndef WORKERMI_H_
+#define WORKERMI_H_
 #include <string>
 
 class Worker {		// an abstract base class

@@ -1,5 +1,5 @@
-#ifndef _PERSONMI_H_
-#define _PERSONMI_H_
+#ifndef PERSONMI_H_
+#define PERSONMI_H_
 #include <string>
 
 class Person {

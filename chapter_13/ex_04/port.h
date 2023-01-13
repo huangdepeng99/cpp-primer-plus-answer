@@ -1,5 +1,5 @@
-#ifndef _PORT_H_
-#define _PORT_H_
+#ifndef PORT_H_
+#define PORT_H_
 #include <iostream>
 
 class Port {

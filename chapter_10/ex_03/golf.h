@@ -1,5 +1,5 @@
-#ifndef _GOLF_H_
-#define _GOLF_H_
+#ifndef GOLF_H_
+#define GOLF_H_
 class golf {
 private:
 	static const int Len = 40;

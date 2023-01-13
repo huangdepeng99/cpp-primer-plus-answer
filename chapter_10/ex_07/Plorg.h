@@ -1,5 +1,5 @@
-#ifndef _PLORG_H_
-#define _PLORG_H_
+#ifndef PLORG_H_
+#define PLORG_H_
 class Plorg {
 private:
 	static const int Len = 20;

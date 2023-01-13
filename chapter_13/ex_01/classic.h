@@ -1,5 +1,5 @@
-#ifndef _CLASSIC_H_
-#define _CLASSIC_H_
+#ifndef CLASSIC_H_
+#define CLASSIC_H_
 #include "cd.h"
 
 class Classic final : public Cd {

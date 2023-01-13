@@ -1,5 +1,5 @@
-#ifndef _COMPLEX0_H_
-#define _COMPLEX0_H_
+#ifndef COMPLEX0_H_
+#define COMPLEX0_H_
 #include <iostream>
 
 namespace COMPLEX {

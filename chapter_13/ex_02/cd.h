@@ -1,5 +1,5 @@
-#ifndef _CD_H_
-#define _CD_H_
+#ifndef CD_H_
+#define CD_H_
 #include <iostream>
 
 class Cd {

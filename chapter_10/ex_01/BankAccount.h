@@ -1,5 +1,5 @@
-#ifndef _BANKACCOUNT_H_
-#define _BANKACCOUNT_H_
+#ifndef BANKACCOUNT_H_
+#define BANKACCOUNT_H_
 #include <string>
 
 class BankAccount {

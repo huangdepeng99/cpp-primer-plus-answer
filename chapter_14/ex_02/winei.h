@@ -1,5 +1,5 @@
-#ifndef _WINEI_H_
-#define _WINEI_H_
+#ifndef WINEI_H_
+#define WINEI_H_
 #include <string>
 #include <valarray>
 #include "pairs.h"

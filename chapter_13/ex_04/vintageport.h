@@ -1,5 +1,5 @@
-#ifndef _VINTAGEPORT_H_
-#define _VINTAGEPORT_H_
+#ifndef VINTAGEPORT_H_
+#define VINTAGEPORT_H_
 #include "port.h"
 
 class VintagePort final : public Port {

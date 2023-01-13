@@ -1,5 +1,5 @@
-#ifndef _PAIRS_H_
-#define _PAIRS_H_
+#ifndef PAIRS_H_
+#define PAIRS_H_
 
 template <typename T1, typename T2>
 class Pair {

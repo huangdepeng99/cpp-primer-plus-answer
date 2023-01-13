@@ -1,5 +1,5 @@
-#ifndef _STOCK20_H_
-#define _STOCK20_H_
+#ifndef STOCK20_H_
+#define STOCK20_H_
 #include <iostream>
 
 class Stock {

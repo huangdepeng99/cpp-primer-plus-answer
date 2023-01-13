@@ -1,5 +1,5 @@
-#ifndef _WINEC_H_
-#define _WINEC_H_
+#ifndef WINEC_H_
+#define WINEC_H_
 #include <string>
 #include <valarray>
 #include "pairs.h"

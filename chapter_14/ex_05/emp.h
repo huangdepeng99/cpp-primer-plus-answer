@@ -1,5 +1,5 @@
-#ifndef _EMP_H_
-#define _EMP_H_
+#ifndef EMP_H_
+#define EMP_H_
 #include <iostream>
 #include <string>
 

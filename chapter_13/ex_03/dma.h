@@ -1,5 +1,5 @@
-#ifndef _DMA_H_
-#define _DMA_H_
+#ifndef DMA_H_
+#define DMA_H_
 // base class topDMA
 class topDMA {
 private:

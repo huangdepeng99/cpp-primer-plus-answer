@@ -1,5 +1,5 @@
-#ifndef _QUEUETP_H_
-#define _QUEUETP_H_
+#ifndef QUEUETP_H_
+#define QUEUETP_H_
 
 template <typename T>
 class QueueTP {
