@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <new>
 
 using namespace std;
 
@@ -76,8 +77,8 @@ int main(void) {
 		cout << "Please enter an integer greater than 0 and less than or equal to " << maxClassSize <<": ";
 	}
 	
-	student *ptr_stu = new student[class_size];
-	if (ptr_stu == NULL) {
+	student *ptr_stu = new (nothrow) student[class_size];
+	if (ptr_stu == nullptr) {
 		cerr << "Out of space!" << endl;
 		exit(EXIT_FAILURE);
 	}
