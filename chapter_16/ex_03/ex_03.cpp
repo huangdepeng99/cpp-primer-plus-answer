@@ -19,8 +19,12 @@ int main(void) {
 	}
 	
 	vector<string> wordlist;
-	copy(istream_iterator<string>(fin), istream_iterator<string>(),
-		 back_insert_iterator<vector<string> >(wordlist));
+	// copy(istream_iterator<string>(fin), istream_iterator<string>(),
+	//		back_insert_iterator<vector<string> >(wordlist));
+	string word;
+	while (fin >> word) {
+		wordlist.push_back(word);
+	}
 	
 	fin.close();
 	
