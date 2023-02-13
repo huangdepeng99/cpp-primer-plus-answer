@@ -2,6 +2,7 @@
 #define QUEUE_MS_H_
 
 #include <queue>
+#include <utility>
 
 class Customer {
 private:
@@ -14,43 +15,52 @@ public:
     int ptime() const { return processtime; }
 };
 
-template<typename T>
+template<typename T, typename Container = std::queue<T> >
 class queue_ms {
 public:
-	using value_type = T;
-	using container_type = std::queue<value_type>;
+	using container_type = Container;
+	using value_type = typename container_type::value_type;
 	using reference = typename container_type::reference;
 	using const_reference = typename container_type::const_reference;
 	using size_type = typename container_type::size_type;
 private:
 	static const size_type MAX_SIZE = 10;
-	container_type q;
+	container_type c;
 	size_type maxsize;
 public:
 	explicit queue_ms(size_type ms = MAX_SIZE)
 		: maxsize(ms) { }
-	bool isempty() const { return q.empty(); }
-	bool isfull() const { return q.size() == maxsize; }
+	bool isempty() const { return c.empty(); }
+	bool isfull() const { return c.size() == maxsize; }
 	size_type max_size() const { return maxsize; }
-	size_type queuecount() const { return q.size(); }
+	size_type queuecount() const { return c.size(); }
 	bool enqueue(const_reference item);
+	bool enqueue(value_type && item);
 	bool dequeue(reference item);
 };
 
-template<typename T>
-bool queue_ms<T>::enqueue(const_reference item) {
+template<typename T, typename Container>
+bool queue_ms<T, Container>::enqueue(const_reference item) {
 	if (isfull())
 		return false;
-	q.push(item);
+	c.push(item);
 	return true;
 }
 
-template<typename T>
-bool queue_ms<T>::dequeue(reference item) {
+template<typename T, typename Container>
+bool queue_ms<T, Container>::enqueue(value_type && item) {
+	if (isfull())
+		return false;
+	c.push(std::move(item));
+	return true;
+}
+
+template<typename T, typename Container>
+bool queue_ms<T, Container>::dequeue(reference item) {
 	if (isempty())
 		return false;
-	item = q.front();
-	q.pop();
+	item = c.front();
+	c.pop();
 	return true;
 }
 
