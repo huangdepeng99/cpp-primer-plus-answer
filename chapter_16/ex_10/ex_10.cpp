@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <new>
 #include <memory>
 #include <algorithm>
+#include <cstdlib>
 
 using namespace std;
 
@@ -37,7 +39,17 @@ sorted_by_price_desc(const_lref r1, const_lref r2)
 { return sorted_by_price_asc(r2, r1); }
 
 bool FillReview(lref r) {
-	val_tp temp(new Review);
+	Review * p;
+	try {
+		p = new Review;
+	}
+	catch (const bad_alloc & ba) {
+		cerr << "Out of memory. Process termination." << endl;
+		exit(EXIT_FAILURE);
+	}
+	val_tp temp(p);
+	p = nullptr;
+	
     cout << "Enter book title (quit to quit): ";
     getline(cin, temp->title);
     if (temp->title == "quit")
