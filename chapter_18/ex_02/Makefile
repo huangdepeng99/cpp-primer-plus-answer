@@ -4,6 +4,9 @@ TARGETS = ex_02 ex_02_verb
 CXXFLAGS = -Wall -std=c++11
 CXX = g++
 
+.PHONY: all
+all: $(TARGETS)
+
 ex_02 : $(SRCS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
