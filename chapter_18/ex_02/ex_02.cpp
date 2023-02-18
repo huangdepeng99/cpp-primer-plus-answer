@@ -14,8 +14,7 @@ int main(void) {
 	Cpmv cm1;
 	show(cm1, "cm1:");
 	
-	cm1 = Cpmv("Hello", "Happy");	// 编译器优化，没有调用移动构造函数来初始化形参，
-									// 这也是为什么只调用了一次析构函数
+	cm1 = Cpmv("Hello", "Happy");
 	show(cm1, "cm1:");
 	
 	string s1 = "Apple";
@@ -30,9 +29,9 @@ int main(void) {
 	
 	Cpmv cm4 = Cpmv("yellow", "good") + Cpmv(" shirt", " idea");	// 编译器优化，没有调用移动构造函数，直接
 																	// 让 cm4 引用返回的临时对象，并延长其生命
-																	// 周期，直到离开 cm4 所在的声明区域
+																	// 周期，直到离开 cm4 所在的声明区域。
 	show(cm4, "cm4:");
-	cm4 = cm1 + Cpmv(" tree", " sky");	// 编译器优化，没有调用移动构造函数
+	cm4 = cm1 + Cpmv(" tree", " sky");	// 编译器优化，没有调用移动构造函数。
 	show(cm4, "cm4:");
 	
 	swap(cm3, cm4);
