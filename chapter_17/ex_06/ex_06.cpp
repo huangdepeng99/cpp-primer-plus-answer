@@ -136,9 +136,9 @@ void show_menu(void) {
 	;
 	for (size_t i = 0; i < opts.size(); ++ i) {
 	cout << left
-	<< "| " << setw(7) << opts[i]
-	<< "| " << setw(11) << opt2ck_map.find(opts[i])->second.second
-	<< "|\n"
+	<< "| " << setw(6) << opts[i]
+	<< " | " << setw(10) << opt2ck_map.find(opts[i])->second.second
+	<< " |\n"
 	<< "-----------------------\n"
 	;
 	}
