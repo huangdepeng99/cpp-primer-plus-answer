@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <utility>
 #include <cstdlib>
+#include <cstdint>
 
 using namespace std;
 
@@ -13,11 +14,11 @@ void ShowStr(const string & s) {
 }
 
 void GetStrs(ifstream & ifs, vector<string> & vs) {
-	size_t sz;
+	uint64_t sz;
 	const size_t BUFSZ = 512;
 	char buffer[BUFSZ];
 	string temp;
-	while (ifs.read( reinterpret_cast<char *> (&sz), sizeof(size_t) )) {
+	while (ifs.read( reinterpret_cast<char *> (&sz), sizeof(sz) )) {
 		size_t times = sz / BUFSZ;
 		size_t rest = sz - BUFSZ * times;
 		for (size_t i = 0; i < times; ++ i) {
@@ -37,8 +38,8 @@ private:
 public:
 	explicit Store(ofstream & ofs) : ofs_(ofs) { }
 	void operator()(const string & s) {
-		size_t sz = s.size();
-		ofs_.write( reinterpret_cast<char *> (&sz), sizeof(size_t) );
+		uint64_t sz = s.size();
+		ofs_.write( reinterpret_cast<char *> (&sz), sizeof(sz) );
 		ofs_.write(s.data(), sz);
 	}
 };
