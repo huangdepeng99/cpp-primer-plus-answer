@@ -47,7 +47,7 @@ int main(void) {
 		cout << "Here are the current contents of the " << filename << " file:" << endl;
 		while ((fin >> classtype).get(ch)) {
 			unique_ptr<abstr_emp> p( make_employee( static_cast<classkind> (classtype) ) );
-			if (p.get() == nullptr) {
+			if (!p) {
 				ostringstream oss;
 				oss << "The data in file " << filename << " is incorrect";
 				print_error(oss.str());
