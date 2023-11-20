@@ -6,7 +6,7 @@
 
 #ifdef VERBOSE_
 #include <iostream>
-#define MESG_(S_) do { std::cout << S_ << std::endl; } while (0)
+#define MESG_(S_) do { std::cout << S_ << " called" << std::endl; } while (0)
 #endif
 
 // begin class Cpmv
@@ -19,7 +19,7 @@ private:
 	Info * pi = nullptr;
 public:
 #ifdef VERBOSE_
-	Cpmv() { MESG_("Cpmv::Cpmv() called"); }
+	Cpmv() { MESG_(__PRETTY_FUNCTION__); }
 #else
 	constexpr Cpmv() = default;
 #endif
@@ -27,7 +27,7 @@ public:
 	Cpmv(const first_type & fst, const second_type & snd)
 	: pi(new Info (fst, snd))
 #ifdef VERBOSE_
-	{ MESG_("Cpmv::Cpmv(const string&, const string&) called"); }
+	{ MESG_(__PRETTY_FUNCTION__); }
 #else
 	{ }
 #endif
@@ -35,7 +35,7 @@ public:
 	Cpmv(first_type && fst, second_type && snd)
 	: pi(new Info (std::move(fst), std::move(snd)))
 #ifdef VERBOSE_
-	{ MESG_("Cpmv::Cpmv(string&&, string&&) called"); }
+	{ MESG_(__PRETTY_FUNCTION__); }
 #else
 	{ }
 #endif
@@ -43,28 +43,28 @@ public:
 	Cpmv(const Cpmv & cm)
 	: pi(cm.pi ? new Info (*(cm.pi)) : nullptr)
 #ifdef VERBOSE_
-	{ MESG_("Cpmv::Cpmv(const Cpmv&) called"); }
+	{ MESG_(__PRETTY_FUNCTION__); }
 #else
 	{ }
 #endif
 	
 	Cpmv(Cpmv && cm) {
 #ifdef VERBOSE_
-		MESG_("Cpmv::Cpmv(Cpmv&&) called");
+		MESG_(__PRETTY_FUNCTION__);
 #endif
 		swap(cm);
 	}
 	
 	~Cpmv() {
 #ifdef VERBOSE_
-		MESG_("Cpmv::~Cpmv() called");
+		MESG_(__PRETTY_FUNCTION__);
 #endif
 		delete pi;
 	}
 	
 	Cpmv & operator=(const Cpmv & cm) {	// copy & swap
 #ifdef VERBOSE_
-		MESG_("Cpmv& Cpmv::operator=(const Cpmv&) called");
+		MESG_(__PRETTY_FUNCTION__);
 #endif
 		Cpmv temp = cm;
 		swap(temp);
@@ -73,7 +73,7 @@ public:
 	
 	Cpmv & operator=(Cpmv && cm) {		// move & swap
 #ifdef VERBOSE_
-		MESG_("Cpmv& Cpmv::operator=(Cpmv&&) called");
+		MESG_(__PRETTY_FUNCTION__);
 #endif
 		swap(cm);
 		return *this;
@@ -82,7 +82,7 @@ public:
 //  可以将上面的复制赋值运算符和移动赋值运算符写成一个函数：
 //	Cpmv & operator=(Cpmv cm) {		// copy/move & swap
 //#ifdef VERBOSE_
-//		MESG_("Cpmv& Cpmv::operator=(Cpmv) called");
+//		MESG_(__PRETTY_FUNCTION__);
 //#endif
 //		swap(cm);
 //		return *this;
@@ -90,7 +90,7 @@ public:
 	
 	void swap(Cpmv & cm) noexcept {
 #ifdef VERBOSE_
-		MESG_("void Cpmv::swap(Cpmv&) called");
+		MESG_(__PRETTY_FUNCTION__);
 #endif
 		// 下面是更通用的写法，但这里不需要这样写：
 		// using std::swap;
@@ -105,7 +105,7 @@ public:
 //  更通常的写法：
 //	Cpmv operator+(const Cpmv & cm) const & {
 //#ifdef VERBOSE_
-//		MESG_("Cpmv Cpmv::operator+(const Cpmv&) const & called");
+//		MESG_(__PRETTY_FUNCTION__);
 //#endif
 //		return Cpmv(first(*this) + first(cm),
 //					second(*this) + second(cm));
@@ -113,7 +113,7 @@ public:
 //	
 //	Cpmv operator+(Cpmv && cm) && {
 //#ifdef VERBOSE_
-//		MESG_("Cpmv Cpmv::operator+(Cpmv&&) && called");
+//		MESG_(__PRETTY_FUNCTION__);
 //#endif
 //		using std::move;
 //		return Cpmv(first(move(*this)) + first(move(cm)),
@@ -122,7 +122,7 @@ public:
 //	
 //	Cpmv operator+(Cpmv && cm) const & {
 //#ifdef VERBOSE_
-//		MESG_("Cpmv Cpmv::operator+(Cpmv&&) const & called");
+//		MESG_(__PRETTY_FUNCTION__);
 //#endif
 //		using std::move;
 //		return Cpmv(first(*this) + first(move(cm)),
@@ -131,7 +131,7 @@ public:
 //	
 //	Cpmv operator+(const Cpmv & cm) && {
 //#ifdef VERBOSE_
-//		MESG_("Cpmv Cpmv::operator+(const Cpmv&) && called");
+//		MESG_(__PRETTY_FUNCTION__);
 //#endif
 //		using std::move;
 //		return Cpmv(first(move(*this)) + first(cm),
@@ -151,14 +151,14 @@ public:
 
 inline void swap(Cpmv & cm1, Cpmv & cm2) noexcept {
 #ifdef VERBOSE_
-	MESG_("void swap(Cpmv&, Cpmv&) called");
+	MESG_(__PRETTY_FUNCTION__);
 #endif
 	cm1.swap(cm2);
 }
 
 inline Cpmv operator+(const Cpmv & lhs, const Cpmv & rhs) {
 #ifdef VERBOSE_
-	MESG_("Cpmv operator+(const Cpmv&, const Cpmv&) called");
+	MESG_(__PRETTY_FUNCTION__);
 #endif
 	// 这里的 first() 和 second() 是通过 ADL 找到的，常规的名字查找
 	// 规则是无法找到定义在类 Cpmv 内的函数 first() 和 second() 的。
@@ -168,7 +168,7 @@ inline Cpmv operator+(const Cpmv & lhs, const Cpmv & rhs) {
 
 inline Cpmv operator+(Cpmv && lhs, Cpmv && rhs) {
 #ifdef VERBOSE_
-	MESG_("Cpmv operator+(Cpmv&&, Cpmv&&) called");
+	MESG_(__PRETTY_FUNCTION__);
 #endif
 	using std::move;
 	return Cpmv(first(move(lhs)) + first(move(rhs)),
@@ -177,7 +177,7 @@ inline Cpmv operator+(Cpmv && lhs, Cpmv && rhs) {
 
 inline Cpmv operator+(const Cpmv & lhs, Cpmv && rhs) {
 #ifdef VERBOSE_
-	MESG_("Cpmv operator+(const Cpmv&, Cpmv&&) called");
+	MESG_(__PRETTY_FUNCTION__);
 #endif
 	using std::move;
 	return Cpmv(first(lhs) + first(move(rhs)),
@@ -186,7 +186,7 @@ inline Cpmv operator+(const Cpmv & lhs, Cpmv && rhs) {
 
 inline Cpmv operator+(Cpmv && lhs, const Cpmv & rhs) {
 #ifdef VERBOSE_
-	MESG_("Cpmv operator+(Cpmv&&, const Cpmv&) called");
+	MESG_(__PRETTY_FUNCTION__);
 #endif
 	using std::move;
 	return Cpmv(first(move(lhs)) + first(rhs),
